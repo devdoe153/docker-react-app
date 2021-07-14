@@ -5,12 +5,12 @@ language: generic
 services:
   - docker
 
-before_install:
-  - echo "start creating an image with dockerfile"
-  - docker build -t devdoe153/docker-react-app -f Dockerfile.dev .
+# before_install:
+#   - echo "start creating an image with dockerfile"
+#   - docker build -t devdoe153/docker-react-app -f Dockerfile.dev .
 
-script:
-  - docker run -e CI=ture devdoe153/docker-react-app npm run test -- --coverage
+# script:
+#   - docker run -e CI=ture devdoe153/docker-react-app npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
@@ -21,5 +21,5 @@ deploy:
   bucket_path: "docker-react-app"
   on:
     branch: master
-access_key_id: $AWS_ACCESS_KEY
-secret_access_key_id: $AWS_SECRET_ACCESS_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key_id: $AWS_SECRET_ACCESS_KEY
